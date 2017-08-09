@@ -1,0 +1,49 @@
+\documentclass[10pt,a4paper, notitlepage]{report}
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{svg}
+\usepackage{float}
+
+\title{PhD Proposal}
+\author{Irvin Aloise}
+
+
+\begin{document}
+\maketitle
+
+
+\textbf{Keywords.} \textit{Mobile Robotics, SLAM, Multi-Agent and Multi-Robot Systems}
+
+\newpage
+
+\section*{Summary of Proposal}
+Todo
+
+
+\section*{State of the Art}
+In Robotics, an autonomous agent performs Simultaneous Localization and Mapping (SLAM) when it builds a map of the environment using different kind of sensors while it also localize itself in the created map. It is a complex mathematical problem that has been studied since 80s as explained in \cite{durrant2006simultaneous} and \cite{bailey2006simultaneous}. During this early stage, statistical basis that will constitute SLAM's core were investigated, while only during the late 90s a probabilistic approaches started to spread. The works \cite{leonard1990dynamic}, \cite{dissanayake2001solution} used \textit{Extended Kalman Filters} to solve the problem while other approaches based on \textit{Expectation Maximization} algorithm were proposed by \cite{dellaert2003mcmc}, \cite{thrun2001probabilistic}. Filtering continued to gain popularity with \textit{Particle Filters} - employed in the remarkable work of \textit{Montemerlo et al.} \cite{montemerlo2002fastslam} - and its future refinements like \textit{Rao-Blackwellized Particle Filters} proposed by \cite{grisetti2005improving}, \cite{carlone2010rao} and \cite{tipaldi2007heterogeneous}.
+
+Filtering-based approaches bring multiple drawbacks, like low computational efficiency and low accuracy due to problem's high nonlinearity; for these reasons, \textit{Maximum A Posteriori} algorithms started to gain popularity and a step back to the solution of Lu \textit{et al.} given in \cite{lu1997globally} has been done. Exploiting more powerful resources, the problem can be formalized as an \textit{hyper-graph} where each node represents a robot pose or a landmark - a point of interest placed in the robot's surrounding - and each hyper-edge represents a constraint between a subset of nodes. 
+
+Exploiting graph's topology, factor-graph optimization can achieve impressive performances as stated in the works of Dallaert \textit{et al.} \cite{dellaert2006square} and Kummerle \textit{et al.}  \cite{kummerle2011g}. MAP optimizers like \cite{kummerle2011g}, \cite{dellaert2012gtsam}, \cite{ceres-solver} and \cite{kaess2012isam2} are able to easily deal with huge graph and incremental optimization, delivering state-of-the-art performances both in speed and accuracy terms.
+
+While SLAM's back-end performs map optimization, graph population is done by system's front-end exploiting robot's equipped sensors. 
+
+\section*{Research Objectives}
+Todo
+
+\section*{Results, impacts and benefits}
+Todo
+
+
+
+
+\bibliographystyle{unsrt}
+\bibliography{bibliography}
+
+\end{document}
