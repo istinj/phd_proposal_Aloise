@@ -1,3 +1,4 @@
+% !TeX spellcheck = en_US
 \documentclass[10pt,a4paper, notitlepage]{report}
 \usepackage[english]{babel}
 \usepackage[latin1]{inputenc}
@@ -8,8 +9,9 @@
 \usepackage{hyperref}
 \usepackage{svg}
 \usepackage{float}
+\usepackage{lettrine}
 
-\title{PhD Proposal}
+\title{PhD Proposal: \\ Design and development of long-range SLAM system}
 \author{Irvin Aloise}
 
 
@@ -17,7 +19,7 @@
 \maketitle
 
 
-\textbf{Keywords.} \textit{Mobile Robotics, SLAM, Multi-Agent and Multi-Robot Systems}
+\textbf{Keywords.} \textit{Mobile Robotics, SLAM, Computer Vision, Perception. Optimization}
 
 
 \section*{Summary of Proposal}
@@ -36,12 +38,28 @@ While SLAM's back-end performs map optimization, graph population is done by sys
 All those systems - even if they are able to produce significant results in terms of accuracy and speed - share one big drawback: the \textit{lack of scalability} that would allow to cope with real-world scenarios. In this sense, the research community is still far from a solution, even if some early attempts are made. Possible approaches to scalability that can be found in literature are based on \textit{node - edge sparsification} \cite{kretzschmar2011graph-pruninig} \cite{huang2013consistent} - that consists in pruning less informative node or factors following a suitable criterion - \textit{parallelization of SLAM system} \cite{ni-dallaert2010nested-dissections} \cite{ni-dallaert2007tectonicSAM} \cite{grisetti2010hogman} or \textit{multi-robot SLAM} \cite{cunningham2013ddfSAM2} \cite{lazaro2013mr-slam}. All those approaches are too early and still miss the point on long-term scalability issues like \textit{robustness}, the possibility to run with \textit{limited resources} and \textit{efficient data storage methods}. It is good to notice that a scalable SLAM system, besides all those features, has to operate in different environments, thus adaptation must be taken in consideration to avoid failures - e.g. map representation adaptation, system's parameters auto-tuning to different environmental conditions - but none of the existing SLAM system provides such competences.
 
 \section*{Research Objectives}
-Simultaneous Localization and Mapping is a well known topic in Robotics and the research community has done many steps forward, but still there are many problems unsolved and not yet well investigated. System's scalability is one this open issues. 
+Scalability is the first step towards \textit{long-range SLAM}, allowing the robot to operate for long periods without saturating system's resources. 
 
-Scalability is the first step towards \textit{long-range SLAM}, allowing the robot to operate for long periods without saturating system's resources. It has been demonstrated that using \textit{direct linear solvers}, factor-graphs grow quadratically with the number of variables; moreover, loop-closures cause a lessening of the problem sparsity, leading to more computational-heavy optimization steps. With this in mind, graph efficiency must by seriously improved in order to let the system run properly. \textit{Sub-graph partitioning} \cite{grisetti2012condensed-m} represents a good starting point to achieve results in this direction. For example, compress and off-load parts of the graph that are not relevant for the current state of the robot may lead to an easier optimization from a computational point of view. Of course, this means to perform non-global optimization, thus, convergence's quality must be also considered.
+My research will focus on the development of a brand new SLAM system that can handle issues due to operations in large environments and for long continued period. Scalability can achieved at different level and, thus, there are several topics that I plan to cover during my research period.
+
+Obviously, the first step is a deep review of the literature to better understand how state-of-the-art systems work and where modifications are needed to improve scalability. At this point, it is possible to active develop some novel approaches to accomplish the goal.
+
+It has been demonstrated that using \textit{direct linear solvers}, factor-graphs grow quadratically with the number of variables; moreover, loop-closures cause a lessening of the problem's sparsity, leading to more computational-heavy optimization steps. With this in mind, \textit{graph efficiency} must by seriously improved in order to let the system run properly. \textit{Sub-graph partitioning} \cite{grisetti2012condensed-m} represents a good starting point to achieve results in this direction. For example, compress and off-load parts of the graph that are not relevant for the current state of the robot may lead to an easier optimization from a computational point of view. It is good to notice that this means to perform non-global optimization, thus, convergence's quality must be also take in consideration to avoid failures.
+
+Major improvements may also come from more efficient map representations. Current systems rely on point-clouds or volumetric map but those methods waste a lot of memory - e.g. the representation of an empty room still need lots of resources to store all the landmarks found in it, even if that room is not relevant and does not contain useful informations. \textit{Compressing known part of the map} \cite{lynen2015getoutofmylab} can represent the base on which start more detailed analysis. A possible approach may be \textit{map decentralization}, where buildings - or generic areas - hold their own map. In this way the robot can simply load the map, perform its task while updating missing parts - or modifications - of the downloaded map and, finally, upload the new representation. In this way even less powerful robots can be used for autonomous long-range tasks. More efficient maps can be obtained using \textit{high-level representations}, that would bring a deeper understanding of robots' surroundings. Speaking of recognition, it is impossible to not mention the results of \textit{Convolutional Neural Networks} \cite{krizhevsky2012alexnet} in such area. CNNs deliver state-of-the-art performances in object recognition and - even if they have long training time - may offer a big aid in building more expressive maps, starting also from point-cloud representations \cite{maturana2015voxnet}.
+
+In order to have a functional out-of-the-box long-range mapping, it is required to design the system in a way that is able to deal with dramatic environmental changes - e.g. night-day shifts or indoor-outdoor transitions. Again, \textit{Machine Learning} techniques can come in aid, providing ways to overcome this issue.
+
+Finally, integrating all those features with a suitable SLAM front-end, I expect to deliver improved performances in terms of scalability for long-range mapping.
 
 \section*{Results, impacts and benefits}
-Todo
+Simultaneous Localization and Mapping is far from being solved in lots of robotics instances. Many problems are still unsolved while other continue to arise, thus, the main purpose of my research consists in finding answers for some of those questions. 
+
+A scalable robust SLAM system is required in many application, like \textit{Precision Agriculture} or \textit{Autonomous Driving Cars}. Robots operating in fields or highways have to run for many kilometers to accomplish a task, traversing different type of surroundings and facing dramatic changes in environmental conditions. Obviously, failures can come from multiple sources and they must faced and solved to provide end users with fail-safe robots.
+
+Scalable SLAM is achieved combining powerful front-end with an efficient and smart back-end, building a map that is expressive but memory-thrifty. This means that succeeding in this purpose will bring major benefits to robotics community together with other related research fields - e.g. pure optimization theory, computer graphics and machine learning.
+
+What I do expect from my research is a system designed with those concepts in mind that can be used as baseline for future investigations in such area. Scalable SLAM - and robotics in general - is an important step towards real-world use of robots in daily situations.
 
 
 
