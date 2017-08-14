@@ -48,18 +48,18 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.59588341)%
-    \put(0.20215429,0.39161148){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.31092896\unitlength}\centering \end{minipage}}}%
+  \begin{picture}(1,0.66671837)%
+    \put(0.20215429,0.46244644){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.31092896\unitlength}\centering \end{minipage}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{media/inkscape/slam_system_mod.pdf}}%
-    \put(0.15902713,0.21603507){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\begin{minipage}{0.32506213\unitlength}\centering \Huge FRONT-END\end{minipage}}}%
-    \put(0.06873601,0.16919383){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\begin{minipage}{0.50576434\unitlength}\centering \huge Extracts interesting point from measurements (\textit{features}) \\ \vspace{5px} Tracks features close in time (\textit{landmarks}) \\ \vspace{5px} Finds features close in space (\textit{loop-closures})\end{minipage}}}%
+    \put(0.15902713,0.28687004){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\begin{minipage}{0.32506213\unitlength}\centering \Huge FRONT-END\end{minipage}}}%
+    \put(0.06873601,0.24002879){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\begin{minipage}{0.50576434\unitlength}\centering \LARGE Extracts interesting point from measurements (\textit{features}) \\ \vspace{5px} Tracks features close in time (\textit{landmarks}) \\ \vspace{5px} Finds features close in space (\textit{loop closures}) \end{minipage}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{media/inkscape/slam_system_mod.pdf}}%
-    \put(0.66438744,0.19064593){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\begin{minipage}{0.29275778\unitlength}\centering \Huge BACK-END\end{minipage}}}%
-    \put(0.71713192,0.1462275){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\begin{minipage}{0.18675927\unitlength}\centering \huge Graph optimization\end{minipage}}}%
+    \put(0.66438744,0.26148089){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\begin{minipage}{0.29275778\unitlength}\centering \Huge BACK-END\end{minipage}}}%
+    \put(0.71713192,0.21706246){\color[rgb]{1,1,1}\makebox(0,0)[lt]{\begin{minipage}{0.18675927\unitlength}\centering \LARGE Graph optimization\end{minipage}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{media/inkscape/slam_system_mod.pdf}}%
-    \put(0.24560095,0.5101646){\color[rgb]{0.31764706,0.31372549,0.03529412}\makebox(0,0)[lt]{\begin{minipage}{0.15775671\unitlength}\centering \Large SENSORS\\ MEASUREMENTS\end{minipage}}}%
+    \put(0.24560095,0.57251968){\color[rgb]{0.31764706,0.31372549,0.03529412}\makebox(0,0)[lt]{\begin{minipage}{0.15775671\unitlength}\centering \LARGE SENSORS\\ MEASUREMENTS\end{minipage}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{media/inkscape/slam_system_mod.pdf}}%
-    \put(0.70364033,0.50867679){\color[rgb]{0.31764706,0.31372549,0.03529412}\makebox(0,0)[lt]{\begin{minipage}{0.21401602\unitlength}\centering \Huge UPDATED MAP\end{minipage}}}%
+    \put(0.70364033,0.57951175){\color[rgb]{0.31764706,0.31372549,0.03529412}\makebox(0,0)[lt]{\begin{minipage}{0.21401602\unitlength}\centering \Huge UPDATED MAP\end{minipage}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{media/inkscape/slam_system_mod.pdf}}%
   \end{picture}%
 \endgroup%

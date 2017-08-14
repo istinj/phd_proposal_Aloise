@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{631.14106445bp}%
+    \setlength{\unitlength}{687.05029297bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,34 +48,34 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.70003727)%
-    \put(0.13333859,0.37776199){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{}}}%
+  \begin{picture}(1,0.5939782)%
+    \put(0.08190849,0.32419349){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{media/inkscape/graph_slam.pdf}}%
-    \put(0.12181486,0.42217953){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.15428993\unitlength}\centering $x_0$\end{minipage}}}%
+    \put(0.07132251,0.36266772){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.14173447\unitlength}\centering $x_0$\end{minipage}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{media/inkscape/graph_slam.pdf}}%
-    \put(0.28402152,0.42217953){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.15428993\unitlength}\centering $x_1$\end{minipage}}}%
+    \put(0.22032948,0.36266772){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.14173447\unitlength}\centering $x_1$\end{minipage}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{media/inkscape/graph_slam.pdf}}%
-    \put(0.44622815,0.42217953){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.15428993\unitlength}\centering $x_2$\end{minipage}}}%
+    \put(0.36933642,0.36266772){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.14173447\unitlength}\centering $x_2$\end{minipage}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{media/inkscape/graph_slam.pdf}}%
-    \put(0.60651426,0.42217953){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.15428993\unitlength}\centering $x_3$\end{minipage}}}%
+    \put(0.51657913,0.36266772){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.14173447\unitlength}\centering $x_3$\end{minipage}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{media/inkscape/graph_slam.pdf}}%
-    \put(0.76808065,0.42217953){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.15428993\unitlength}\centering $x_4$\end{minipage}}}%
+    \put(0.66499794,0.36266772){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.14173447\unitlength}\centering $x_4$\end{minipage}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{media/inkscape/graph_slam.pdf}}%
-    \put(0.20344684,0.42125617){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.15428993\unitlength}\centering $u_0$\end{minipage}}}%
-    \put(0.36285841,0.42125617){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.15428993\unitlength}\centering $u_1$\end{minipage}}}%
-    \put(0.52675145,0.42125617){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.15428993\unitlength}\centering $u_2$\end{minipage}}}%
-    \put(0.6848826,0.42125617){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.15428993\unitlength}\centering $u_3$\end{minipage}}}%
+    \put(0.14631162,0.3641483){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.14173447\unitlength}\centering $u_0$\end{minipage}}}%
+    \put(0.29275096,0.3641483){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.14173447\unitlength}\centering $u_1$\end{minipage}}}%
+    \put(0.44330708,0.3641483){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.14173447\unitlength}\centering $u_2$\end{minipage}}}%
+    \put(0.58857019,0.3641483){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.14173447\unitlength}\centering $u_3$\end{minipage}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=7]{media/inkscape/graph_slam.pdf}}%
-    \put(0.16951586,0.30409828){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.15428993\unitlength}\centering $z_0$\end{minipage}}}%
-    \put(0.27963149,0.30409828){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.15428993\unitlength}\centering $z_1$\end{minipage}}}%
-    \put(0.38590588,0.30409828){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.15428993\unitlength}\centering $z_2$\end{minipage}}}%
-    \put(0.50370398,0.30409828){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.15428993\unitlength}\centering $z_3$\end{minipage}}}%
-    \put(0.61061857,0.30409828){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.15428993\unitlength}\centering $z_4$\end{minipage}}}%
-    \put(0.71817339,0.30409828){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.15428993\unitlength}\centering $z_5$\end{minipage}}}%
-    \put(0.27386962,0.18630016){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.15428993\unitlength}\centering $l_0$\end{minipage}}}%
-    \put(0.61635471,0.1907816){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.15428993\unitlength}\centering $l_1$\end{minipage}}}%
+    \put(0.1151418,0.25652421){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.14173447\unitlength}\centering $z_0$\end{minipage}}}%
+    \put(0.21629669,0.25652421){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.14173447\unitlength}\centering $z_1$\end{minipage}}}%
+    \put(0.31392292,0.25652421){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.14173447\unitlength}\centering $z_2$\end{minipage}}}%
+    \put(0.42213512,0.25652421){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.14173447\unitlength}\centering $z_3$\end{minipage}}}%
+    \put(0.52034945,0.25652421){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.14173447\unitlength}\centering $z_4$\end{minipage}}}%
+    \put(0.61915192,0.25652421){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.14173447\unitlength}\centering $z_5$\end{minipage}}}%
+    \put(0.2110037,0.14598321){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.14173447\unitlength}\centering $l_0$\end{minipage}}}%
+    \put(0.52561881,0.15009997){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.14173447\unitlength}\centering $l_1$\end{minipage}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=8]{media/inkscape/graph_slam.pdf}}%
-    \put(0.50818543,0.53798526){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.15428993\unitlength}\centering $u_4$\end{minipage}}}%
+    \put(0.42625189,0.47137847){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.14173447\unitlength}\centering $u_4$\end{minipage}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=9]{media/inkscape/graph_slam.pdf}}%
   \end{picture}%
 \endgroup%
