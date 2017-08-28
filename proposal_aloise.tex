@@ -7,17 +7,20 @@
 \usepackage{amssymb}
 \usepackage{epstopdf}
 \usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
 \usepackage{hyperref}
-\usepackage{svg}
 \usepackage{float}
 \usepackage{lettrine}
+
 
 
 \newcommand{\superref}[3]{\hyperref[#1]{#2} (\capitalisewords{#3} \ref{#1})}
 
 
-\title{Design and development of \\ a long-range SLAM system}
+\title{Design and development of \\ a long-term SLAM system}
 \author{Irvin Aloise}
+
 
 
 \begin{document}
@@ -28,31 +31,50 @@
 
 
 \section*{Summary of Proposal}
-Mobile robots, in order to accomplish tasks in the real world, need to be aware of where their own pose with respect to the world. This involves two things: the robot must have a \textit{map} of the environment and it must \textit{locate} itself inside of the created map. In robotics, the task of learning maps under pose uncertainty is called \textit{Simultaneous Localization and Mapping} (SLAM). SLAM systems are used in many applications, for example, \textit{industrial and service robotics}, \textit{space exploration} or \textit{autonomous cars}. 
+Mobile robots, in order to accomplish tasks in real world, need to be aware of both their own pose in the world and the world's layout. This involves two aspects: the robot must have a \textit{map} of the environment and it must \textit{locate} itself inside of the created map. In robotics, the task of learning maps under pose uncertainty is called \textit{Simultaneous Localization and Mapping} (SLAM). SLAM systems are used in many applications, for example, \textit{industrial and service robotics}, \textit{space exploration} or \textit{autonomous cars}. 
 
 \begin{figure}[h]
     \centering
-    \resizebox{0.8\textwidth}{!}{\input{media/inkscape/graph_slam.pdf_tex}}
-    \caption{A generic \textit{factor graph}: circles represent \textit{nodes} - poses in orange and landmarks in green -  while squares are \textit{edges} - pose edges are $u$-labeled while point edges are $z$-labeled. $u_4$ represents a \textit{loop-closure}.}
-    \label{fig:graph}
+    \begin{minipage}[t!]{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{media/3Dmap.png}
+        \subcaption[first caption.]{}
+        \label{fig:map_a}
+    \end{minipage}%
+    \begin{minipage}[t!]{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{media/3Dpoint_cloud.png}
+        \subcaption[second caption.]{}
+        \label{fig:map_b}
+    \end{minipage}%
+   
+    \caption{Common 3D map representation: (a) 3D map of Stanford parking garage (bottom) and its corresponding satellite view (top); (b) point-cloud map acquired at the University of Freiburg (bottom) and relative satellite image (top). Both images are taken from \cite{grisetti2010tutorial}.} 
+    \label{fig:map}
 \end{figure}
 
-The robotics community has focused its efforts in this task since many years, and various approaches have been exploited. One of the most intuitive (and also effective) is the so called \textit{graph-based SLAM}\cite{lu1997globally}, in which the robot builds an hyper-graph where nodes represent its poses and interesting world points (landmarks), while the hyper-edges encode sensor measurements between a subset of nodes, as depicted in Figure \ref{fig:graph}. Graph-based SLAM systems have two main components: a \textit{front-end} that exploits sensors measurements to build the graph and a \textit{back-end} that performs non-linear optimization of the graph - as shown in Figure \ref{fig:slam-overview}. 
+The robotics community has been addressing this task since many years, and various basic methodologies have been combined to construct valid solutions to SLAM. One of the most intuitive formulations is the so called \textit{graph-based SLAM}\cite{lu1997globally}. In this methodology, the robot builds an hyper-graph whose nodes represent either robot poses or salient points in the world (landmarks), while the hyper-edges encode sensor measurements between a subset of nodes. 
 
-Even if research in robotics has done several steps forward, the SLAM problem is not solved. Lots of questions are still open and many issues are largely unexplored \cite{carlone2016slam-survey}. One of these open problems is the fact that current state-of-the-art systems are not scalable. 
+Graph-based SLAM systems have two main components: a \textit{front-end} and a \textit{back-end} - as shown in Figure \ref{fig:slam-overview}. The former one exploits raw sensors measurements to build the graph, thus it is heavily sensor dependent. It is in charge of determine the most likely constraint between a subset of nodes resulting from an observation, solving the \textit{data association} problem; moreover, it has to track salient world point close in time and to recognize when the robot is visiting an already seen place, generating a \textit{loop closure}. SLAM's \textit{back-end} focuses on computing the best map given the constraints and this is achieved through non-linear optimization of the graph. Thus, it performs inference on the abstract data generated by the front-end and it feeds back information to support loop-closures detection and validation.
 
-\textit{Scalability} is a key component to build robots able to cope with real-world and long-range tasks. Examples can be found in \textit{Precision Agriculture} - e.g. a drone that has to map several huge fields to track plant growth - or in \textit{Autonomous Driving Vehicles} - e.g. a fleet of self-driving trucks that deliver stuff ordered on the Internet to the clients - and in many others fields. The graph of current state-of-the-art can \textit{grow unbounded} for long-range tasks, making impossible real-time optimization and saturating robots resources, causing a certain failure of the system. Even storing the map becomes a problem when dimensions start to grow.
+Even if research in robotics has taken several steps forward, the SLAM problem is not fully solved. Many questions are still open and different aspects are largely unexplored \cite{carlone2016slam-survey}. 
 
-Another problem comes from the \textit{map}: for long-range tasks, we know that maps can be very big in space and time, but how do we scale them in order to keep them still usable? Moreover, the way in which a map is intended must be revised, to obtain a fully scalable system: generally, we know that maps are a \textit{collection of interesting points} obtained by the processing of sensors' data, stored \textit{locally} in the robot. \textit{But what if the map is in the environment}? What if a robot can enter in a place and download data on the environment, updating it while executing its other tasks? In this way, maps can be more complex and contain more useful information in order to understand the environment - e.g. objects' position, road signals, warnings and so on. Taking people as example, the precise planimetry of a park is not useful in terms of knowledge and it represents a complex object to read and remember, while a simple sketch of the park that emphasizes entrances and exits, points of interests and walkable paths is very powerful and allow us to do what we want in the park. What if environmental information can be represented like this also in robotics? If this would be the case, maps will be smaller, lighter and more informative. Thus, this decentralized and content-aware map representations are essential for scalability and represent a step forward for cognitive robots that do not just sense the environment, but that understand it. 
+One open problem is the fact that current state-of-the-art systems are not scalable neither in space nor in time. This means that a robot is not able to perform SLAM in a big environment or to operate for several hours without incurring in critical system failures. Thus, \textit{scalability} is a key property for robots that are able to cope with real-world and long-term tasks. Examples of applications can be found in \textit{Precision Agriculture}, \textit{Autonomous Driving Vehicles} and many other fields - e.g. a fleet of self-driving trucks that deliver stuff ordered on the Internet to the clients. 
 
-\vspace{10px}
+The graph of current state-of-the-art can \textit{grow unbounded} for long-term tasks, rendering real-time optimization impossible and saturating robots computing resources. Even storing the map becomes a problem when dimensions start to grow.
+
+Another problem comes from the \textit{map} itself: for long-term tasks where robots must operate for long time or cover a huge area we know that maps can require a very large memory footprint. This aspect raises an important question: how do we keep usable the map without destroying system's performances? 
+
+The way in which a map is intended must be revised, to obtain a fully scalable system: generally, we know that maps are a \textit{collection of salient points} obtained by the processing of sensors' data, stored \textit{locally} in the robot. \textit{But what if the map is in the environment}? What if a robot can enter a place and download data on the environment, updating it while executing its other tasks? In this way, maps can be more precise and contain more useful information - e.g. objects' position, road signals, warnings and so on. 
+
+For this reason, the design of \textit{distributed local-maps} is a good starting point to obtain results in long-term SLAM. Many aspects have to be investigated in this sense, starting from environment-robot communications and the development of a consistent map \textit{data structure}. The latter one is fundamental to obtain \textit{memory efficient maps} that can be used by different robots, with distinct computing resources. Obviously, all those new design constraints must be satisfied keeping in mind that the overall accuracy must not be lessened. Thus, map representations must not be too simple in order to avoid suboptimal solutions.
+
+\vspace{15px}
 
 Given all those premises, what I expect to obtain in my research is a system designed to deliver state-of-the-art performances even after several hours of usage, proposing a way to efficiently perform back-end optimization together with new map representations that can deal with huge environments, opening to new research paths in the involved fields.
 
 \begin{figure}
     \centering
-%    \includegraphics[width=0.9\linewidth]{media/inkscape/slam_system_mod.png}
-    \resizebox{0.8\textwidth}{!}{\input{media/inkscape/slam_system_mod.pdf_tex}}
+    \includegraphics[width=0.9\linewidth]{media/slam_system_mod.png}
     \caption{SLAM system overview: sensor measurements are fed into the \textit{front-end}, that extracts features and solves the \textit{data-association}, building the graph that will constitute \textit{back-end's input}. At this point, \textit{Maximum A Posteriori} estimation is done and the map is updated.}
     \label{fig:slam-overview}
 \end{figure}
@@ -70,28 +92,28 @@ While SLAM's back-end performs map optimization, graph population is done by sys
 All those systems - even if they are able to produce significant results in terms of accuracy and speed - share one big drawback: the \textit{lack of scalability} that would allow to deal with real-world scenarios. In this sense, the research community is still far from a solution, even if some early attempts are made. Possible approaches to scalability that can be found in literature are based on \textit{node - edge sparsification} \cite{kretzschmar2011graph-pruninig} \cite{huang2013consistent} - that consists in pruning less informative node or factors following a suitable criterion - \textit{parallelization of SLAM system} \cite{ni-dallaert2010nested-dissections} \cite{ni-dallaert2007tectonicSAM} \cite{grisetti2010hogman} or \textit{multi-robot SLAM} \cite{cunningham2013ddfSAM2} \cite{lazaro2013mr-slam}. All those approaches are too naive and still miss the point on long-term scalability issues like \textit{robustness}, the possibility to run with \textit{limited resources} and \textit{efficient data storage methods}. It is good to notice that a scalable SLAM system, besides all those features, has to operate in different environments, thus adaptation must be taken in consideration to avoid failures - e.g. map representation adaptation, system's parameters auto-tuning to different environmental conditions - but none of the existing SLAM system provides such competences.
 
 \section*{Research Objectives}
-Scalability is the first step towards \textit{long-range SLAM}, allowing the robot to operate for long periods without saturating system's resources. 
+Scalability is the first step towards \textit{long-term SLAM}, allowing the robot to operate for long periods without saturating system's resources. 
 
 My research will focus on the development of a brand new SLAM system that can handle issues due to operations in large environments and for long continuous time. Scalability can be achieved at different level and, thus, there are several topics that I plan to cover during my research period.
 
 Obviously, the first step is a deep review of the literature to better understand how state-of-the-art systems work and where modifications are needed to improve scalability. At this point, it is possible to active develop some novel approaches to accomplish the goal.
 
-It has been demonstrated that using \textit{direct linear solvers}, factor-graphs grow quadratically with the number of variables; moreover, loop-closures cause a lessening of the problem's sparsity, leading to more computational-heavy optimization steps. With this in mind, \textit{graph efficiency} must by seriously improved in order to let the system run properly. \textit{Sub-graph partitioning} \cite{grisetti2012condensed-m} represents a good starting point to achieve results in this direction. For example, compress and off-load parts of the graph that are not relevant for the current state of the robot may lead to an easier optimization from a computational point of view. It is good to notice that this means to perform non-global optimization, thus, convergence's quality must be also take in consideration to avoid failures.
+Using \textit{direct linear solvers}, factor-graphs' memory consumption grows linearly with the number of edges. Taking advantage of problem's sparsity, it is possible to approximately achieve linear time consumption with respect to the number of variables. However, re-visiting a place different times generates many loop closures, adding several nodes and edges in the same spatial region. In this case, system sparsity will be lessened, leading to less efficient graph optimization. With this in mind, \textit{graph efficiency} must by seriously improved in order to let the system run properly. \textit{Sub-graph partitioning} \cite{grisetti2012condensed-m} represents a good starting point to achieve results in this direction. For example, compress and off-load parts of the graph that are not relevant for the current state of the robot may lead to an easier optimization from a computational point of view. This means to perform non-global optimization, thus, convergence's quality must be also taken in consideration to avoid failures.
 
-Major improvements may also come from more efficient map representations. Current systems rely on point-clouds or volumetric map but those methods waste a lot of memory - e.g. the representation of an empty room still need lots of resources to store all the landmarks found in it, even if that room is not relevant and does not contain useful informations. \textit{Compressing known part of the map} \cite{lynen2015getoutofmylab} can represent the base on which start more detailed analysis. A possible approach may be \textit{map decentralization}, where buildings - or generic areas - hold their own map. In this way the robot can simply load the map, perform its task while updating missing parts - or modifications - of the downloaded map and, finally, upload the new representation freeing its own resources employed to locally store it. In this way even less powerful robots can be used for autonomous long-range tasks. More efficient maps can be obtained using \textit{high-level representations}, that would bring a deeper understanding of robots' surroundings. Speaking of recognition, it is impossible to not mention the results of \textit{Convolutional Neural Networks} \cite{krizhevsky2012alexnet} in such area. CNNs deliver state-of-the-art performances in object recognition and - even if they need long training time - may offer a big aid in building more expressive maps, starting also from point-cloud representations \cite{maturana2015voxnet}.
+Major improvements may also come from more efficient map representations. Current systems rely on point-clouds or volumetric map but those methods require a lot of memory - e.g. the representation of an empty room still need lots of resources to store all the landmarks found in it, even if that room is not relevant and does not contain useful information. \textit{Compressing known part of the map} \cite{lynen2015getoutofmylab} can represent a starting point for more detailed analysis. A possible approach may be \textit{map decentralization}, where buildings - or generic areas - hold their own map. In this way the robot can simply load the map, perform its task while updating missing parts - or modifications - of the downloaded map and, finally, upload the new representation freeing its own resources employed to locally store it. In this way even less powerful robots can be used for autonomous long-term tasks. More efficient maps can be obtained using \textit{high-level representations}, that would bring a deeper understanding of robots' surroundings. Speaking of recognition, it is impossible to not mention the results of \textit{Convolutional Neural Networks} \cite{krizhevsky2012alexnet} in such area. CNNs deliver state-of-the-art performances in object classification and - even if they need long training time - may offer a big aid in building more expressive maps, starting also from point-cloud representations \cite{maturana2015voxnet}.
 
-In order to have a functional out-of-the-box long-range mapping, it is required to design the system in a way that is able to deal with dramatic environmental changes - e.g. night-day shifts or indoor-outdoor transitions. Again, \textit{Machine Learning} techniques can come in aid, providing ways to overcome this issue - e.g. deploying a simple \textit{Artificial Neural Network} (ANN) that computes the right parameters which maximize the accuracy.
+In order to have a functional out-of-the-box long-term mapping, it is required to design the system in a way that is able to deal with substantial environmental changes - e.g. night-day shifts or indoor-outdoor transitions. Again, \textit{Machine Learning} techniques can come in aid, providing ways to overcome this issue - e.g. deploying a simple \textit{Artificial Neural Network} (ANN) that computes the right parameters which maximize the accuracy.
 
-Finally, integrating all those features with a suitable SLAM front-end, I expect to deliver improved performances in terms of scalability for long-range mapping.
+Finally, integrating all those features with a suitable SLAM front-end, I expect to deliver improved performances in terms of scalability for long-term mapping.
 
 \section*{Results, impacts and benefits}
 Simultaneous Localization and Mapping is far from being solved in lots of robotics instances. Many problems are still unsolved while other continue to arise, thus, the main purpose of my research consists in finding answers for some of those questions. 
 
-A scalable robust SLAM system is required in many application, like \textit{Precision Agriculture} or \textit{Autonomous Driving Cars}. Robots operating in fields or highways have to run for many kilometers to accomplish a task, traversing different type of surroundings and facing dramatic changes in environmental conditions. Obviously, failures can come from multiple sources and must be solved to provide end-users fail-safe robots. Innovation in this field will bring to us more powerful agents capable of building and handling large-scale time-varying maps, allowing them to accomplish more complex tasks in a fully autonomous way. Thus, taking in consideration the question \textit{"Is scalable SLAM really needed?"}, of course the answer depends on the application, but, if we want to look at the future of robotics, then the answer is \textit{yes}.
+A scalable robust SLAM system is required in many application, like \textit{Precision Agriculture} or \textit{Autonomous Driving Cars}. Robots operating in fields or highways have to run for many kilometers to accomplish a task, traversing different type of surroundings and facing dramatic changes in environmental conditions. Failures can come from multiple sources and must be solved to provide end-users fail-safe robots. Innovation in this field will bring to us more powerful agents capable of building and handling large-scale time-varying maps, allowing them to accomplish more complex tasks in a fully autonomous way. Thus, taking in consideration the question \textit{"Is scalable SLAM really needed?"}, of course the answer depends on the application, but, if we want to look at the future of robotics, then the answer is \textit{yes}.
 
 Scalable SLAM is achieved combining powerful front-end with an efficient and smart back-end, building a map that is expressive but memory-thrifty. This means that succeeding in this purpose will bring major benefits to robotics community together with other related research fields - e.g. pure optimization theory, computer graphics and machine learning -  and will bring new challenges and opportunities for the SLAM community - e.g. the use Deep Learning. 
 
-\vspace{5px}
+\vspace{15px}
 
 Scalable SLAM - and robotics in general - is an important step towards real-world use of robots in daily situations. For this reason, what I do expect from my research is the creation of a system designed with those concepts in mind, that can be used in different situations without too much effort and that provides state-of-the-art accuracy, opening new paths for future investigations in such area.
 

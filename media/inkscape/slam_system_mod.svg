@@ -16,7 +16,7 @@
    version="1.1"
    inkscape:version="0.91 r13725"
    sodipodi:docname="slam_system_mod.svg"
-   inkscape:export-filename="/home/istin/tex/phd_proposal_Aloise/media/inkscape/slam_system_mod.png"
+   inkscape:export-filename="/home/istin/tex/phd_proposal_Aloise/media/slam_system_mod2.png"
    inkscape:export-xdpi="300"
    inkscape:export-ydpi="300">
   <defs
@@ -849,8 +849,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.49497475"
-     inkscape:cx="412.50882"
-     inkscape:cy="515.15702"
+     inkscape:cx="242.8032"
+     inkscape:cy="513.13671"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -1357,7 +1357,7 @@
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:12, 3, 1.5, 3;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker4745)"
-       d="m 1189.3996,586.09216 0.3886,137.38075 -690.94879,-0.39956 0.6517,-92.53447"
+       d="m 1189.3996,594.17339 -1.4222,74.96949 -697.26708,0.29954 0.69957,-42.94415"
        id="path4737"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
